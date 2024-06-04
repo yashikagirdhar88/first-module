@@ -1,13 +1,12 @@
-# Sample Hardhat Project
+#Contract
+So the project is to have a Contract that explains and illustrates the functionality of three statements that is require, assert, and revert .
+Here, we have our contract as “RequireAssertRevert”, which have two public variables “owner” and “balance”.
+After this we have created a constructor , which sets the contract’s owner to msg.sender (that is to address that deploys the contract).
+After this we have a deposit function here which have one parameter “amount”, In this to check the functionality of require statement , we have require which checks the if the msg.amount(that is the transaction amount) is equal to the amount specified in function call, then it will execute the code further means it will increase the balance according to the amount and if this condition turns out to be false then it will revert a message “incorrect amount sent”
+After this we have another withdraw function this is also having one parameter “amount” and is also checking the functionality of require statement . Firstly require statement checks if msg.sender is the owner and if this is false it will revert a message “Only the owner can withdraw the funds” .
+Require statement again checks a condition that if amount to be withdrawn is less and or equal to the balance of account and if this condition turns out to be false then it will display a message “Insufficient balance “ otherwise if both the conditions of require statement are true then it will execute further code means it will withdraw the amount from balance and will also transfer the amount with help of payable function.
+Now we have another function “transferOwnership” having one parameter as newOwner it too have a require statements which checks the mandatory statement that is if the msg.sender is the owner then only it will get executed further otherwise it will display the message “Only the owner can transfer the ownership”. 
+Now to check the functionality of assert function (what assert function basically do is it checks the critical bugs in the code, here we have an example ) here we check if the new Owner’s address is not the zero address (‘address(0)’) if this condition is not met , the transaction is reverted. Unlike require, assert statement should be used to check for conditions that should never happen.
+If condition in assert statement is met then ownership is transferred to newowner.
+To check functionality of revert statement we have testrevert function. It is having a revert statement with a message , this revert statement will always revert with the message “This function always reverts”.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
